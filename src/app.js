@@ -25,10 +25,19 @@ DatabaseConfig.connect()
   });
 
 app.use(helmet());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  credentials: true
+  origin: (origin, cb) =>
+    !origin || allowedOrigins.includes(origin)
+      ? cb(null, true)
+      : cb(new Error('CORS blocked')),
+  credentials: true,
 }));
+
 
 var limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
