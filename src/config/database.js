@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var DatabaseConfig = {
   connect: function () {
-    var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/japan_learning1';
+    var mongoUri = process.env.MONGODB_URI || 'mongodb+srv://duongvantiendtu:eJFK32ODGnpenoVK@cluster-japano.fyrcrsk.mongodb.net/japan_learning1';
 
     var options = {
       maxPoolSize: 10,
